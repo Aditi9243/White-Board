@@ -69,12 +69,14 @@
         let initialMouseX=null;
         let initialMouseY=null;
         let isMouseDown = false;
-        //tool.strokeStyle="teal";
+        tool.strokeStyle="teal";
+        
+        let toolBar = document.querySelector(".toolbar");
         window.addEventListener("mousedown", function onmouseDown(obj){
             //line initial point
             //drawing process will start fronm here
             initialMouseX=obj.clientX;
-            initialMouseY=obj.clientY;
+            initialMouseY=obj.clientY - toolBar.offsetHeight;
             isMouseDown = true;
             tool.beginPath();
             tool.moveTo(initialMouseX, initialMouseY);
@@ -83,7 +85,7 @@
         window.addEventListener("mousemove", function (obj){
             //console.log("Mouse move fired");
             let finalMouseX=obj.clientX;
-            let finalMouseY=obj.clientY;
+            let finalMouseY=obj.clientY - toolBar.offsetHeight;
             if(isMouseDown== true){
                 //user has pressed the key and then he is moving
                 tool.lineTo(finalMouseX, finalMouseY);
