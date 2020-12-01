@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!--canvas-->
+    <canvas class="board"></canvas>
+    <!--object-->
+    <script>
+        let canvas = document.querySelector(".board");
+        //alert("js Ran");
+        //inc size of canvas
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        //get browser tool
+        let tool= canvas.getContext("2d");
+        //default color => black
+        //tool.fillStyle="blue";
+        //sr-> 0, sy->0, width->100, height-100
+        //tool.fillRect(0,0,100,100);
+        //tool.fillStyle="green";
+        //tool.fillRect(100,100,100,100);
+        //tool.strokeRect(100, 100, 100, 100);
+
+        //*******************line draw**********************
+        //tool.beginPath();
+        //tool.moveTo(20, 20);
+        //tool.lineTo(100, 100);
+        //tool.lineTo(200, 100);
+        //tool.lineTo(20, 20);
+        //tool.strokeStyle="blue";
+        //tool.lineWidth=10;
+        //tool.stroke();
+        //tool.fill();
+
+        let initialMouseX=null;
+        let initialMouseY=null;
+        let isMouseDown = false;
+        tool.strokeStyle="teal";
+        window.addEventListener("mousedown", function onmouseDown(obj){
+            //line initial point
+            //drawing process will start fronm here
+            initialMouseX=obj.clientX;
+            initialMouseY=obj.clientY;
+            isMouseDown = true;
+            tool.beginPath();
+            tool.moveTo(initialMouseX, initialMouseY);
+        });
+
+        window.addEventListener("mousemove", function (obj){
+            //console.log("Mouse move fired");
+            let finalMouseX=obj.clientX;
+            let finalMouseY=obj.clientY;
+            if(isMouseDown== true){
+                //user has pressed the key and then he is moving
+                tool.lineTo(finalMouseX, finalMouseY);
+                tool.stroke();
+            }
+
+        });
+
+        window.addEventListener("mouseup", function (){
+            isMouseDown=false;
+            //console.log("mouse up fired");
+        });
+        
+       
+    </script>
+</body>
+</html>
