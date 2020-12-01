@@ -8,9 +8,21 @@
         *{
             margin: 0px;
         }
+        .tool-img{
+            height: 5rem;
+        }
+        .tools{
+            display: flex;
+        }
     </style>
 </head>
 <body>
+    <div class="toolbar">
+        <div class="tools">
+            <div class="tool"><img src="pencil.png" alt="" class="tool-img" id="pencil"></div>
+            <div class="tool"><img src="eraser.jpeg" alt="" class="tool-img" id="eraser"></div>
+        </div>
+    </div>
     <!--canvas-->
     <canvas class="board"></canvas>
     <!--object-->
@@ -22,6 +34,19 @@
         canvas.width = window.innerWidth;
         //get browser tool
         let tool= canvas.getContext("2d");
+        tool.lineWidth=10;
+        let Alltools = document.querySelectorAll(".tool-img");
+        console.log(Alltools.length);
+        for(let i=0;i< Alltools.length; i++)
+        Alltools[i].addEventListener("click", function(e){
+            let toolName = e.currentTarget.id;
+            if(toolName== "pencil"){
+                tool.strokeStyle="blue";
+            }
+            else if(toolName== "eraser"){
+                tool.strokeStyle="White";
+            }
+        })
         //default color => black
         //tool.fillStyle="blue";
         //sr-> 0, sy->0, width->100, height-100
@@ -44,7 +69,7 @@
         let initialMouseX=null;
         let initialMouseY=null;
         let isMouseDown = false;
-        tool.strokeStyle="teal";
+        //tool.strokeStyle="teal";
         window.addEventListener("mousedown", function onmouseDown(obj){
             //line initial point
             //drawing process will start fronm here
