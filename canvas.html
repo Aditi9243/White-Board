@@ -14,13 +14,72 @@
         .tools{
             display: flex;
         }
+        .tool-options{
+            height: 7rem;
+            width: 8rem;
+            background: yellow;
+        }
+        .tool-range{
+            height: 40%;
+            background: green;
+            /* trick */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .colors {
+            height: 60%;
+            background: brown;
+            display: flex;
+            /* horzionatlly  */
+            justify-content: space-evenly;
+           /* vertical alignment */
+            align-items: center;
+        }
+        .color{
+            height: 60%;
+            background: gray;
+            width: 25%;
+            border-radius: 50%;
+        }
+        .slider {
+            width: 80%
+        }
+
+        #red {
+            background: red;
+        }
+
+        #green {
+            background: green;
+        }
+
+        #blue {
+            background-color: blue;
+        }
+
     </style>
 </head>
 <body>
     <div class="toolbar">
         <div class="tools">
-            <div class="tool"><img src="NewIcons/Black_Pencil.svg" alt="" class="tool-img" id="pencil"></div>
-            <div class="tool"><img src="NewIcons/Eraser.svg" alt="" class="tool-img" id="eraser"></div>
+            <div class="tool">
+                <img src="NewIcons/Black_Pencil.svg" alt="" class="tool-img" id="pencil">
+                <div class="tool-options">
+                    <div class="tool-range">
+                        <input type="range" class="slider">
+                    </div>
+ 
+                    <div class="colors">
+                        <div class="color" id="red"></div>
+                        <div class="color" id="green"></div>
+                        <div class="color" id="blue"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tool">
+                <img src="NewIcons/Eraser.svg" alt="" class="tool-img" id="eraser">
+            </div>
         </div>
     </div>
     <!--canvas-->
